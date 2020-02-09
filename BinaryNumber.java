@@ -36,16 +36,18 @@ public class BinaryNumber {
 			}
 		}
 	
-	public int getLength() {
-		
-		return data.length;
-	}
+
 	
 		
 	public int[] getInnerArray() {
 		return data;
 		
 		
+	}
+	
+	public int getLength() {
+		
+		return data.length;
 	}
 	
 	
