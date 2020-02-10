@@ -117,18 +117,8 @@ public class BinaryNumber {
 		int c[] =  new int [bn1.getLength()];
 		
 		for (int i = 0; i < bn1.getLength(); i++) {
-			if (a[i]== 0 && b[i] == 0) {
-				c[i] = 0;
-			}
-			if (a[i]== 1 && b[i] == 0) {
-				c[i] = 1;
-			}
-			if (a[i]== 0 && b[i] == 1) {
-				c[i] = 1;
-			}
-			if (a[i]== 1 && b[i] == 1) {
-				c[i] = 1;
-			}
+			c[i]=a[i] | b[i];
+			
 		
 		
 			
@@ -146,22 +136,9 @@ public class BinaryNumber {
 		int b[] = bn2.getInnerArray();
 		int c[] =  new int [bn1.getLength()];
 		
-		
-		
-		
 		for (int i = 0; i < bn1.getLength(); i++) {
-			if (a[i]== 0 && b[i] == 0) {
-				c[i] = 0;
-			}
-			if (a[i]== 1 && b[i] == 0) {
-				c[i] = 0;
-			}
-			if (a[i]== 0 && b[i] == 1) {
-				c[i] = 0;
-			}
-			if (a[i]== 1 && b[i] == 1) {
-				c[i] = 1;
-			}
+			c[i]=a[i] & b[i];
+			
 			
 			
 		
@@ -175,7 +152,7 @@ public class BinaryNumber {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		BinaryNumber myobj1 = new BinaryNumber("1000");
-		BinaryNumber myobj2 = new BinaryNumber("0011");
+		BinaryNumber myobj2 = new BinaryNumber("1011");
 		//System.out.println(Arrays.toString(myobj.data));
 		System.out.println(Arrays.toString(myobj2.data));
 		System.out.println(myobj2.getLength());
