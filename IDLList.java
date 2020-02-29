@@ -1,13 +1,12 @@
 package assignment2;
 
 import java.util.ArrayList;
-
 import java.lang.IllegalStateException;
 
 public class IDLList<E> {
 	
 	
-	class Node<E>{
+	private class Node<E>{
 		private E data;
 		private Node<E> next;
 		private Node<E> prev;
@@ -20,7 +19,6 @@ public class IDLList<E> {
 			this.data = elem;
 			this.next = next;
 			this.prev = prev;
-			
 		}
 	}
 	
@@ -45,7 +43,26 @@ public class IDLList<E> {
 	
 	public boolean add (int index, E elem) {
 		Node<E> newElement = new Node<E>(elem, null, null);
-		if (index==size) {
+
+		if (index == 0 && indices.get(index+1) == null) {
+			indices.add(index, newElement);
+			newElement.next=null;
+			newElement.prev=null;
+			head = newElement;
+			size++;
+			return true;
+		}
+
+		if (index == 0) {
+			indices.add(index, newElement);
+			indices.get(index+1).prev=newElement;
+			newElement.next=indices.get(index+1);
+			newElement.prev=null;
+			head = newElement;
+			size++;
+			return true;
+		}
+		else if (index==size) {
 			indices.add(index, newElement);
 			indices.get(index-1).next=newElement;
 			newElement.next = null;
@@ -54,15 +71,6 @@ public class IDLList<E> {
 			size++;
 			return true;
 			
-		}
-		else if (index == 0) {
-			indices.add(index, newElement);
-			indices.get(index+1).prev=newElement;
-			newElement.next=indices.get(index+1);
-			newElement.prev=null;
-			head = newElement;
-			size++;
-			return true;
 		}
 		
 		else {
@@ -114,9 +122,7 @@ public class IDLList<E> {
 		
 	}
 	
-	public E get (int index) {
-		return indices.get(index).data;
-	}
+	public E get(int index) { return indices.get(index).data; }
 	
 	public E getHead() {
 		return get(0);
@@ -152,7 +158,7 @@ public class IDLList<E> {
 		}
 		else {
 			Node<E> temp = tail;
-			tail.prev.next = null;//Fix this
+			tail.prev.next = null;
 			tail = tail.prev;
 			indices.remove(size-1);
 			size--;
