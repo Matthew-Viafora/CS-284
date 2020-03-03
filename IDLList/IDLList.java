@@ -168,7 +168,10 @@ public class IDLList<E> {
 	}
 	
 	public E removeAt(int index) {
-		try {
+		if (indices.get(index).data == null) {
+			throw new IllegalStateException("Error: No element at index");
+		}
+		else{
 		E temp = get(index);
 		indices.get(index).prev.next = indices.get(index).next;
 		indices.get(index).next.prev = indices.get(index).prev;
@@ -176,9 +179,7 @@ public class IDLList<E> {
 		size--;
 		return temp;
 		}
-		catch(Exception e){
-			throw new IllegalStateException("Error: No element at index");
-		}
+
 		
 	}
 	
